@@ -11,6 +11,8 @@
  @Component({
    selector: 'app-home',
    standalone: true,
+ }
+ )
 -  imports: [CommonModule, BottomNavComponent, LucideAngularModule],
 +  imports: [CommonModule, BottomNavComponent, LucideAngularModule, TelegramPopupComponent],
    template: `

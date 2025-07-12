@@ -11,6 +11,8 @@
  @Component({
    selector: 'app-investment-detail',
    standalone: true,
+ }
+ )
 -  imports: [CommonModule, FormsModule],
 +  imports: [CommonModule, FormsModule, LucideAngularModule],
    template: `
@@ -234,7 +236,7 @@
 +    if (!this.userProfile || !this.investmentPlan) return '';
 +    
 +    if ((this.userProfile.vip_level || 0) < (this.investmentPlan.required_vip_level || 0)) {
-+      return `VIP ${this.investmentPlan.required_vip_level} Required`;
++      return \`VIP ${this.investmentPlan.required_vip_level} Required`;
 +    }
 +    
 +    if ((this.userProfile.balance || 0) < (this.investmentPlan.invest_amount * this.quantity)) {
@@ -262,11 +264,11 @@
 +    if (!this.userProfile || !this.investmentPlan) return '';
 +    
 +    if ((this.userProfile.vip_level || 0) < (this.investmentPlan.required_vip_level || 0)) {
-+      return `You need VIP ${this.investmentPlan.required_vip_level} to access this investment plan. Complete lower VIP investments to unlock higher levels.`;
++      return \`You need VIP ${this.investmentPlan.required_vip_level} to access this investment plan. Complete lower VIP investments to unlock higher levels.`;
 +    }
 +    
 +    if ((this.userProfile.balance || 0) < (this.investmentPlan.invest_amount * this.quantity)) {
-+      return `You need ₹${this.investmentPlan.invest_amount * this.quantity} to make this investment. Please recharge your account or reduce the quantity.`;
++      return \`You need ₹${this.investmentPlan.invest_amount * this.quantity} to make this investment. Please recharge your account or reduce the quantity.`;
 +    }
 +    
 +    return '';
@@ -334,8 +336,8 @@
 +        type: 'investment',
 +        amount: totalAmount,
 +        status: 'completed',
-+        description: `Investment in ${this.investmentPlan.name}`,
-+        reference_id: `INV-${Date.now()}`
++        description: \`Investment in ${this.investmentPlan.name}`,
++        reference_id: \`INV-${Date.now()}`
 +      });
 +
 +      // Navigate back to invest page

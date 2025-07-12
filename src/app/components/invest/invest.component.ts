@@ -11,6 +11,8 @@
  @Component({
    selector: 'app-invest',
    standalone: true,
+ }
+ )
 -  imports: [CommonModule, BottomNavComponent],
 +  imports: [CommonModule, BottomNavComponent, LucideAngularModule],
    template: `
@@ -328,7 +330,7 @@
 +  getBadgeText(plan: any): string {
 +    if (!this.canInvest(plan)) {
 +      if ((this.userProfile?.vip_level || 0) < (plan.required_vip_level || 0)) {
-+        return `VIP ${plan.required_vip_level} Required`;
++        return \`VIP ${plan.required_vip_level} Required`;
 +      }
 +      if ((this.userProfile?.balance || 0) < plan.invest_amount) {
 +        return 'Insufficient Balance';
@@ -339,7 +341,7 @@
    }
 
 -  getInvestmentBadgeText(investment: Investment): string {
--    if (!this.canInvestIn(investment)) return `VIP ${this.getRequiredVipLevel(investment)} Required`;
+-    if (!this.canInvestIn(investment)) return \`VIP ${this.getRequiredVipLevel(investment)} Required`;
 -    if (investment.type === 'stable' && investment.investAmount === 300) return 'Popular';
 -    if (investment.type === 'daily') return 'Quick';
 -    return 'Available';
